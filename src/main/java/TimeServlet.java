@@ -10,11 +10,11 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-@WebServlet("/Time")
+@WebServlet("/Time") // localhost:8080/Time
 public class TimeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String location = req.getParameter("location");
+        String location = req.getParameter("location"); // .../Time?location=*Mainland/City* (e.g. Europe/Warsaw, America/New_York)
         ZoneId zoneId = ZoneId.of(location);
         String[] city = location.split("/");
         LocalDateTime now = LocalDateTime.now(zoneId);
